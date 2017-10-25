@@ -59,7 +59,8 @@ android {
 }
 
 /**
- * Our project dependencies! Here its the place to add all those cool things you saw on github
+ * Our project dependencies! Here its the place to add all those cool things you saw on github.
+ * Be careful with 65k limit of methods! (you still can enable multidex, but bear in mind its cons)
  */
 dependencies {
     /**

@@ -17,5 +17,13 @@ android {
 dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
 
-    imlementation 'com.squareup.coordinators:coordinators:0.3'
+    // For Presenters connecting with views
+    implementation 'com.squareup.coordinators:coordinators:0.3'
+
+    // Rx
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
+
+    // RxBinding
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
 }
