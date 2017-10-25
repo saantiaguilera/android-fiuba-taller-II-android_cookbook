@@ -26,4 +26,8 @@ dependencies {
 
     // RxBinding
     implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+
+    // RxLifeycle
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.0'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-android:2.2.0'
 }

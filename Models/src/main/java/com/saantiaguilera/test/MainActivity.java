@@ -19,9 +19,10 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * Note that this is a test class, we are only showcasing the Models problem, and we are not addressing
+ * other issues (as using DI for injecting views, MVP / Layering, Rx, etc)
  * Created by saguilera on 10/25/17.
  */
-
 public class MainActivity extends AppCompatActivity {
 
     @NonNull

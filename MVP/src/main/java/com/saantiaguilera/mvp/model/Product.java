@@ -17,6 +17,16 @@ public final class Product {
     private String name;
     private List<String> tags;
 
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public int getInnerSchemaId() {
         return innerSchemaId;
     }
@@ -68,7 +78,8 @@ public final class Product {
         if (id != product.id) return false;
         if (Double.compare(product.price, price) != 0) return false;
         if (name != null ? !name.equals(product.name) : product.name != null) return false;
-        return tags != null ? tags.equals(product.tags) : product.tags == null;
+        if (tags != null ? !tags.equals(product.tags) : product.tags != null) return false;
+        return description != null ? description.equals(product.description) : product.description == null;
     }
 
     @Override
@@ -81,7 +92,7 @@ public final class Product {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (tags != null ? tags.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
     }
-
 }
