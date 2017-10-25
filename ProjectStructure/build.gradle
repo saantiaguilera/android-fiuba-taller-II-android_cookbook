@@ -1,0 +1,81 @@
+/**
+ * This is one of our modules. Here we apply a plugin to this specific project,
+ * telling him that he will behave as an android application.
+ *
+ * This gradle plugin is obtained from the root project build.gradle, in the clojure
+ * buildscripts-dependencies ('com.android.tools.build:gradle:3.0.0-beta4')
+ */
+apply plugin: 'com.android.application'
+
+/**
+ * With this clojure we configure our android application. Its similar to our xcode workspace
+ * were we declare information about our project metadata / specifications.
+ */
+android {
+    /**
+     * This is the version of the android sdk
+     * we will use to compile against the app. Note that depending on the sdk version
+     * sources may vary and features may not exist (that you may make use of)
+     */
+    compileSdkVersion 26
+    /**
+     * This will tell which build tools version to use. As the name suggest,
+     * the build tools are tools for building the app (the aapt, aidl, dx, among others).
+     * You rarely should use this except you are trying to optimize a very specific part
+     * of your app. Its highly recommended to use the same major version as the compileSdkVersion.
+     */
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        /**
+         * Our applicationId, which should be a unique identifier of your app against all the ones
+         * in the playstore
+         */
+        applicationId "com.saguilera.androidfiuba"
+
+        /**
+         * The min sdk version to support. Cellphones with an android system lower than
+         * this one wont be able to donwload/install our application
+         */
+        minSdkVersion 15
+
+        /**
+         * The target sdk version, usually, but not necessarily the same as the compile one.
+         * Targetting a particular sdk means you support all the features and that you have tested
+         * from this version backwards.
+         */
+        targetSdkVersion 26
+
+        /**
+         * Playstore property. This is a unique identifier of your version.
+         */
+        versionCode 1
+
+        /**
+         * Playstore property. The name to show to the peeps downloading your app
+         */
+        versionName "1.0"
+    }
+}
+
+/**
+ * Our project dependencies! Here its the place to add all those cool things you saw on github
+ */
+dependencies {
+    /**
+     * Implementation dependency. This means it will be available from compile time onwards
+     */
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+
+    /**
+     * Test implementation dependency. The same, but specifically for the test variant.
+     * By default you should have Release, Debug, Test variants.
+     *
+     * Although we wont get in depth in variants as its not necessary for Taller II, you should
+     * simply know that a variant is just a slightly different "application" of yours.
+     * For example you could have in variant Release a url against your production backend, and
+     * in debug a different url that points to your 'development' / 'staging' url of the backend.
+     * Or even make classes behave different, depending of it.
+     */
+    testImplementation 'junit:junit:4.12'
+}

@@ -1,0 +1,86 @@
+/**
+ * Always use Gradle as build system, as its highly integrated with Android and gives support to
+ * most of the technologies available.
+ *
+ * One of the biggest cons of gradle currently its the build time, which is way too slow.
+ * Although they are making a lot of changes towards this objective, there are other options which
+ * support android development + having really low build times. The most known are:
+ * - Buck (if you would like to use it alongside gradle, see Uber's okBuck)
+ * - Bazel
+ */
+
+/**
+ * As we are aiming to starting an android project, here we will use Gradle only.
+ * Make note that Gradle is written in Groovy, so the code will be written in it.
+ */
+
+/**
+ * The buildscript clojure let us configure the project. Please note that this "project"
+ * is not the application's one, as the application is just a module inside the project.
+ * A project may contain more than one module, and they can be different stuff lets say
+ * - Root project (this buildscript):
+ *   -> Android application
+ *   -> Java library (consumed by the application module)
+ *   -> Android library (consumed by the application module)
+ *   -> ...
+ *
+ * The root project will have information agnostic to the modules, such as gradle plugins,
+ * utils for configuring modules, etc.
+ */
+buildscript {
+    /**
+     * The repositories clojure let us define from where to fetch our dependencies.
+     * Here we are supplying google() repository and jcenter().
+     *
+     * Note that jcenter() is one of the most knowns and used for android and Java,
+     * as it contains mavenCentral() one.
+     */
+    repositories {
+        google()
+        jcenter()
+    }
+
+    /**
+     * This are the dependencies of the root project. Note that your dependencies dont go here
+     * Here you will place for example:
+     *  - Dependencies for the android framework to know how to compile your project
+     *  - Dependencies for knowing how to publish a library
+     *  - Dependencies for gradle plugins that do X feature
+     *    -> For example: github.com/nebula-plugins/gradle-dependency-lock-plugin
+     *       Its a gradle plugin that will lock dynamic dependencies into static ones.
+     */
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0-beta4'
+    }
+}
+
+/**
+ * This is a method (that has as first parameter a clojure for an action) that will iterate
+ * an ALL projects (this means, firstly this root project, then each module) and execute
+ * that action on that context
+ */
+allprojects {
+    /**
+     * For each module/project, let them fetch dependencies from google() or jcenter()
+     * repository
+     */
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+/**
+ * We create a gradle task of type "Delete", that will delete the whole
+ * build directory of the rootProject
+ * This directory is in this case 'AndroidFIUBA/build/'
+ */
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+/**
+ * To run a gradle task:
+ * in Unix systems: './gradlew <module>:task', or './gradlew task' to run it in all modules
+ * in Windows systems: Sorry, no clue
+ */
