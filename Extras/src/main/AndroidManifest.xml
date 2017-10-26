@@ -1,10 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.extras">
 
+    <!-- For image loading -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!-- For maps -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
-        android:name=".images.test.MainApplication"
+        android:name=".test.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,14 +16,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- For maps. The integer value is provided by the gms dependency -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <!-- For maps. The string value is provided in our build.gradle file -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity
-            android:name=".images.test.MainActivity"
-            android:screenOrientation="portrait" >
+            android:name=".images.test.ImageActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".test.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".map.test.MapActivity" />
 
     </application>
 </manifest>

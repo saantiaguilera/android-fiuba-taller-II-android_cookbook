@@ -5,19 +5,20 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
+import com.example.extras.test.MainApplication;
 import com.example.extras.R;
 import com.example.extras.images.fresco.FrescoImageController;
 import com.example.extras.images.picasso.CircleTransform;
 import com.facebook.drawee.view.DraweeView;
 import com.squareup.picasso.Picasso;
 
-public class MainActivity extends AppCompatActivity {
+public class ImageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_image);
 
         loadWithFresco();
         loadWithPicasso();
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         FrescoImageController.create()
                 .load("http://frescolib.org/static/sample-images/fresco_logo_anim_full_frames_with_pause_l.gif")
                 .resize(200, 200)
-                .into((DraweeView) findViewById(R.id.activity_main_frescoImageView));
+                .into((DraweeView) findViewById(R.id.activity_image_frescoImageView));
     }
 
     /**
@@ -80,6 +81,6 @@ public class MainActivity extends AppCompatActivity {
                 .load("https://avatars2.githubusercontent.com/u/82592")
                 .resize(200, 200)
                 .transform(new CircleTransform())
-                .into((ImageView) findViewById(R.id.activity_main_picassoImageView));
+                .into((ImageView) findViewById(R.id.activity_image_picassoImageView));
     }
 }

@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+// This is used for the maps api
+apply from: 'my_hidden_file.gradle'
+
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -10,6 +13,12 @@ android {
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
+
+        // Add the google maps api key.
+        // The findProperty is a property that shouldnt be exposed,
+        // You should declare it in a hidden gradle file, local to your computer but not
+        // In your vcs
+        resValue "string", "google_maps_key", (project.extensions.googleApiKey ?: "")
     }
 }
 
@@ -20,5 +29,6 @@ dependencies {
     implementation 'com.facebook.fresco:fresco:1.5.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
 
-    // Map?
+    // Map
+    implementation 'com.google.android.gms:play-services-maps:11.4.2'
 }

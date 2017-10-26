@@ -1,8 +1,9 @@
-package com.example.extras.images.test;
+package com.example.extras.test;
 
 import android.app.Application;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.google.android.gms.maps.MapsInitializer;
 
 /**
  * Main Application. This class simulates the application head.
@@ -16,6 +17,10 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // Initialize Fresco
         Fresco.initialize(this);
+
+        // Initialize google maps api
+        MapsInitializer.initialize(this);
     }
 }
