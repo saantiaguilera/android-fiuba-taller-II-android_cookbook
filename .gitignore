@@ -6,6 +6,7 @@
 .DS_Store
 build/
 .idea/
+node_modules/
 /build
 /captures
 .externalNativeBuild

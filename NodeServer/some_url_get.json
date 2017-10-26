@@ -1,0 +1,18 @@
+{
+	"name": "TEST GET",
+	"description": "GET. This comes from backend",
+	"license": "BSD-3",
+	"imageUrl": "/Users/saguilera/Projects/AndroidFIUBA/NodeServer/static_image.png",
+	"dependencies": [
+		{
+			"group": "com.test",
+			"name": "testgetname",
+			"version": "1.0.0"
+		},
+		{
+			"group": "com.test2",
+			"name": "name2",
+			"version": "2.0.0"
+		}
+	]
+}

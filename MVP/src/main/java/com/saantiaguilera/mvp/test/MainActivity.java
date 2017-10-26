@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                         descriptionPresenter.setTextBold(aBoolean);
                     }
                 });
+        // Note that this stream doesnt need to compose to avoid leaking, since it lives the same as
+        // the application (its a single activity)
 
         // Bind the view to the presenter. This will automatically manage the presenter-view
         // logic whenever the view is attached or detached from a layout / root

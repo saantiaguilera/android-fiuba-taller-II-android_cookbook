@@ -37,8 +37,6 @@ public class TextBolderPresenter extends BasePresenter<TextBolderContract.View>
     @Override
     protected void onViewAttached(@NonNull TextBolderContract.View view) {
         view.observeClicks()
-                // We will run everything from now on in a separate thread for computations
-                .observeOn(Schedulers.computation())
                 // This makes us not leak memory, since this "observable of clicks" will live forever
                 // and we want that as soon as the presenter gets the view detached, to destroy itself
                 // You can also bind to a specific view instead of the presenter lifecycle.
@@ -51,7 +49,7 @@ public class TextBolderPresenter extends BasePresenter<TextBolderContract.View>
                     }
                 })
                 // We will 'subscribe' (run the code for starting this observable and stuff)
-                // on the main thread
+                // on the main thread, since its a view and its a framework requirement
                 .subscribeOn(AndroidSchedulers.mainThread())
                 // We subscribe and for each click, if there is a state subject we emit the boolean
                 .subscribe(new Consumer<Boolean>() {
