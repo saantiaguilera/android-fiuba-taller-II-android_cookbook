@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+
+        android:textSize="16sp"
+        android:text="Fresco" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/activity_main_frescoImageView"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        fresco:actualImageScaleType="centerInside"
+        fresco:roundAsCircle="true" />
+
+    <!--
+    For seeing all the fresco attributes:
+    http://frescolib.org/docs/using-simpledraweeview.html#Advanced%20XML%20attributes
+    -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+
+        android:textSize="16sp"
+        android:text="Picasso" />
+
+    <ImageView
+        android:id="@+id/activity_main_picassoImageView"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+
+        android:adjustViewBounds="true"/>
+
+</LinearLayout>
